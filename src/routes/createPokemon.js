@@ -6,6 +6,10 @@ module.exports = ( app) => {
         .then(pokemon => {
             const message = `Le pokemon ${req.body.name} a bien été crée.`
             res.json({message, data: pokemon})
+        .catch(error => {
+            const message = 'Le pokemon n\'a pas pu etre récupéré. Réessayez dans quelques instants.'
+            res.status(500).json({message, data: error})
+        })
         })
     })
 }
